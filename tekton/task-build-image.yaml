@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: task-build-image
+spec:
+  params:
+    - name: source-repo
+    - name: source-ref
+    - name: output-ref
+  steps:
+    - name: build
+      image: gcr.io/kaniko-project/executor:latest
+      script: |
+        echo "Skeleton build step — emits a build-receipt.v0.1 with the resolved sha256 digest."

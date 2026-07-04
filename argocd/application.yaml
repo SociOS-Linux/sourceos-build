@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sourceos-build
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/SociOS-Linux/sourceos-build
+    targetRevision: main
+    path: tekton
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sourceos-build
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false

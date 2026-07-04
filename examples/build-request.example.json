@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "build-request.v0.1",
+  "requestId": "req.socios.sourceos-smoke-runner.2026-07-04",
+  "requestedBy": "SociOS-Linux/socios",
+  "source": {
+    "repository": "SociOS-Linux/socios",
+    "ref": "refs/heads/main",
+    "commit": "0000000000000000000000000000000000000000"
+  },
+  "target": {
+    "artifactType": "container-image",
+    "platform": "linux/amd64",
+    "outputRef": "registry.example/sourceos/smoke-runner"
+  },
+  "buildConfig": {
+    "contextPath": "images/sourceos-smoke-runner"
+  },
+  "evidenceRequirements": {
+    "digestRequired": true,
+    "provenanceRequired": true,
+    "signatureRequired": true
+  },
+  "createdAt": "2026-07-04T00:00:00Z"
+}

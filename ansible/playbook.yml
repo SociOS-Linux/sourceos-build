@@ -1,0 +1,9 @@
+---
+# SourceOS build host configuration — skeleton (no secrets).
+- name: Configure SourceOS build host
+  hosts: build
+  become: true
+  tasks:
+    - name: Placeholder — install build toolchain
+      ansible.builtin.debug:
+        msg: "Skeleton task; real roles wired per environment."
