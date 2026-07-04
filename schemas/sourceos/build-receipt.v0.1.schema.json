@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.org/sourceos-build/build-receipt.v0.1.json",
+  "title": "SourceOS BuildReceipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "buildId",
+    "requestRef",
+    "status",
+    "artifacts",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "build-receipt.v0.1"
+    },
+    "buildId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.:-]+$"
+    },
+    "requestRef": {
+      "type": "string",
+      "description": "requestId of the BuildRequest this fulfills"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "succeeded",
+        "failed",
+        "rejected"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "type",
+          "digest"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "container-image",
+              "iso",
+              "package",
+              "tarball"
+            ]
+          },
+          "digest": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "builder",
+        "sourceCommit"
+      ],
+      "properties": {
+        "builder": {
+          "type": "string"
+        },
+        "sourceCommit": {
+          "type": "string"
+        },
+        "slsaLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "keyId",
+          "algorithm",
+          "value"
+        ],
+        "properties": {
+          "keyId": {
+            "type": "string"
+          },
+          "algorithm": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "completedAt": {
+      "type": "string"
+    }
+  }
+}

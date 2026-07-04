@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "build-receipt.v0.1",
+  "buildId": "build.sourceos-smoke-runner.0001",
+  "requestRef": "req.socios.sourceos-smoke-runner.2026-07-04",
+  "status": "succeeded",
+  "artifacts": [
+    {
+      "name": "sourceos-smoke-runner",
+      "type": "container-image",
+      "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "ref": "registry.example/sourceos/smoke-runner@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "provenance": {
+    "builder": "tekton://sourceos-build/pipeline-build-image",
+    "sourceCommit": "0000000000000000000000000000000000000000",
+    "slsaLevel": 1
+  },
+  "signatures": [
+    {
+      "keyId": "sourceos-build-signing-v0",
+      "algorithm": "ed25519",
+      "value": "<base64-signature-placeholder>"
+    }
+  ],
+  "completedAt": "2026-07-04T00:05:00Z"
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.org/sourceos-build/build-request.v0.1.json",
+  "title": "SourceOS BuildRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "requestedBy",
+    "source",
+    "target",
+    "evidenceRequirements"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "build-request.v0.1"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.:-]+$"
+    },
+    "requestedBy": {
+      "type": "string",
+      "description": "actor or driving repo, e.g. SociOS-Linux/socios"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "ref"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactType",
+        "platform"
+      ],
+      "properties": {
+        "artifactType": {
+          "type": "string",
+          "enum": [
+            "container-image",
+            "iso",
+            "package",
+            "tarball"
+          ]
+        },
+        "platform": {
+          "type": "string"
+        },
+        "outputRef": {
+          "type": "string"
+        }
+      }
+    },
+    "buildConfig": {
+      "type": "object"
+    },
+    "evidenceRequirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "digestRequired",
+        "provenanceRequired",
+        "signatureRequired"
+      ],
+      "properties": {
+        "digestRequired": {
+          "type": "boolean"
+        },
+        "provenanceRequired": {
+          "type": "boolean"
+        },
+        "signatureRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string"
+    }
+  }
+}

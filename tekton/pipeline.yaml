@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: pipeline-build-image
+spec:
+  params:
+    - name: source-repo
+    - name: source-ref
+    - name: output-ref
+  tasks:
+    - name: build-and-emit-receipt
+      taskRef:
+        name: task-build-image
+      params:
+        - name: source-repo
+          value: $(params.source-repo)
+        - name: source-ref
+          value: $(params.source-ref)
+        - name: output-ref
+          value: $(params.output-ref)
